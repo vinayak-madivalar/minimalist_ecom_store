@@ -49,7 +49,7 @@ const HeroSection = () => {
         autoplay={{ delay: 3000 }}
         pagination={{ clickable: true }}
         navigation
-        className="h-screen"
+        className="h-1/2"
       >
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
@@ -65,18 +65,22 @@ const HeroSection = () => {
       </Swiper>
       <div className="my-8">
         <h1 className="text-center">Featured Products</h1>
-        <div className="flex w-full h-full">
+        <div className="grid grid-cols-2 lg:grid-cols-5 my-4">
           {products.map((product) => (
             <Link href={"/products/" + product.id} key={product.id}>
-              <div className="border shadow-lg rounded-md my-8 mx-4 pb-4 flex flex-col justify-center items-center">
+              <div className="border shadow-lg rounded-md my-4 mx-4 pb-4 flex flex-col justify-center items-center">
                 <img
                   src={product.images[0]}
                   alt={product.title}
                   className="w-full h-auto"
                 />
-                <p className="font-semibold pt-4 pb-1">{product.title}</p>
+                <p className="font-semibold text-center pt-2 pb-1">
+                  {product.title}
+                </p>
                 <Rating data={product} />
-                <p className="pt-1 font-semibold">${product.price}</p>
+                <p className="pt-1 text-center font-semibold">
+                  $ {product.price}
+                </p>
               </div>
             </Link>
           ))}
@@ -84,29 +88,29 @@ const HeroSection = () => {
       </div>
       <div className="mb-8 bg-gray-100 py-8">
         <h1 className="text-center mb-6">Latest Products</h1>
-        <div className="flex items-center justify-center gap-4">
+        <div className="flex items-center justify-center px-2 gap-4 overflow-x-auto">
           <button
             id="new-arrival"
-            className="px-6 py-2 border uppercase text-sm font-semibold border-black focus:bg-black focus:text-white"
+            className="lg:px-6 px-2 py-2 border uppercase text-sm font-semibold border-black focus:bg-black focus:text-white"
             onClick={() => handleCategoryChange("mens-shirts")}
           >
             New Arrivals
           </button>
           <button
-            className="px-6 py-2 border uppercase text-sm font-semibold border-black focus:bg-black focus:text-white"
+            className="lg:px-6 px-2 py-2 border uppercase text-sm font-semibold border-black focus:bg-black focus:text-white"
             onClick={() => handleCategoryChange("womens-bags")}
           >
             Best Sellers
           </button>
           <button
-            className="px-6 py-2 border uppercase text-sm font-semibold border-black focus:bg-black focus:text-white"
+            className="lg:px-6 px-2 py-2 border uppercase text-sm font-semibold border-black focus:bg-black focus:text-white"
             onClick={() => handleCategoryChange("home-decoration")}
           >
             Trending
           </button>
         </div>
         <div>
-          <div className=" mx-8">
+          <div className="mx-0 lg:mx-8">
             <ProductList selectedCategory={selectedCategory} />
           </div>
         </div>

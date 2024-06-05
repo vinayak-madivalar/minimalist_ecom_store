@@ -18,12 +18,12 @@ const Navbar = () => {
   }
 
   return (
-    <div className="flex justify-between items-center sticky w-full z-50 top-0 py-5 px-20 font-semibold bg-gray-100">
+    <div className="flex justify-between items-center sticky w-full z-50 top-0 py-5 px-4 lg:px-20 font-semibold bg-gray-100">
       <div className="flex items-center gap-16">
         <Link href={"/"}>
           <Logo />
         </Link>
-        <ul className="flex items-start gap-6 ">
+        <ul className="hidden md:flex items-start gap-6 ">
           <Link href={"/"}>
             <li>Home</li>
           </Link>
@@ -41,7 +41,7 @@ const Navbar = () => {
       </div>
       <div>
         <ul className="flex items-center gap-5">
-          <li>
+          <li className="hidden lg:block">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -57,7 +57,7 @@ const Navbar = () => {
               />
             </svg>
           </li>
-          <Link href={"/products"}>
+          <Link href={"/products"} className="">
             <li>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +75,7 @@ const Navbar = () => {
               </svg>
             </li>
           </Link>
-          <li>
+          <li className="hidden lg:block">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

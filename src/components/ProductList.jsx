@@ -41,17 +41,17 @@ const ProductList = ({ selectedCategory }) => {
     );
 
   return (
-    <div className="grid grid-cols-4">
+    <div className="grid grid-cols-2 lg:grid-cols-4 my-8">
       {products.length > 0 ? (
         products.map((product) => (
           <Link href={"/products/" + product.id} key={product.id}>
-            <div className="border bg-white shadow-lg rounded-md my-8 mx-4 pb-4 flex flex-col justify-center items-center">
+            <div className="border bg-white shadow-lg rounded-md my-4 mx-4 pb-4 flex flex-col justify-center items-center">
               <img
                 src={product.images[0]}
                 alt={product.title}
                 className="w-full h-auto"
               />
-              <p className="font-semibold pt-4 pb-1 text-center">
+              <p className="font-semibold pt-4 px-1 pb-1 text-center">
                 {product.title}
               </p>
               <Rating data={product} />

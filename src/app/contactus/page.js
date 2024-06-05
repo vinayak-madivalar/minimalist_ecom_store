@@ -7,8 +7,8 @@ const ContactUs = () => {
     <div>
       <Navbar />
       <h1 className="text-center my-8">Contact Us</h1>
-      <div className="flex justify-center items-start gap-8 mx-12">
-        <div className="w-3/5">
+      <div className="flex flex-wrap lg:flex-nowrap justify-center items-start gap-8 lg:mx-12">
+        <div className="w-3/4 lg:w-3/5">
           <form className="flex flex-col ">
             <label className="mb-2 text-lg font-semibold ">
               Full Name <b>*</b>
@@ -41,7 +41,7 @@ const ContactUs = () => {
             </button>
           </form>
         </div>
-        <div className="w-2/5 p-4">
+        <div className="lg:w-2/5 p-4">
           <div className="mb-4">
             <h5 className="text-xl font-semibold mb-1">Address</h5>
             <p className="text-gray-500 font-medium">

@@ -8,8 +8,8 @@ import { FaInstagram } from "react-icons/fa6";
 const Footer = () => {
   return (
     <div>
-      <div className="flex items-start justify-between px-16 bg-gray-100 mt-8 py-8">
-        <div className="flex gap-20">
+      <div className="flex items-start flex-wrap justify-between gap-4 px-4 lg:px-16 bg-gray-100 mt-8 py-8">
+        <div className="flex flex-wrap gap-4 lg:gap-20">
           <div>
             <Logo />
             <h2 className="pt-4 font-semibold">About Us</h2>

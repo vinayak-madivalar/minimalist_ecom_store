@@ -81,8 +81,8 @@ const Products = () => {
   return (
     <div>
       <Navbar />
-      <div className="flex items-start justify-start ">
-        <aside className="mt-4 pl-4 w-2/12">
+      <div className="flex items-center justify-center md:items-start md:justify-start ">
+        <aside className="mt-4 pl-4 w-2/12 hidden md:block">
           <div>
             <h2 className="mb-2 font-bold text-2xl">Category</h2>
             <ul>
@@ -99,9 +99,9 @@ const Products = () => {
           </div>
         </aside>
         <div className="w-10/12">
-          <div className="flex gap-10 items-center justify-between mt-4 mx-4">
-            <div className="flex flex-grow">
-              <div className="flex items-center flex-grow border">
+          <div className="flex flex-wrap gap-10 items-center justify-between mt-4 mx-4">
+            <div className="flex md:flex-grow">
+              <div className="flex items-center md:flex-grow border">
                 <span className="px-3">
                   <svg
                     width="800px"
@@ -124,7 +124,7 @@ const Products = () => {
                   type="text"
                   placeholder="Search Products"
                   value={searchText}
-                  className="pl-0 pr-96 py-3 flex flex-grow outline-0 rounded-none text-sm font-semibold"
+                  className="pl-0 py-3 flex flex-grow outline-0 rounded-none text-sm font-semibold"
                   onChange={(e) => {
                     setSearchText(e.target.value);
                   }}
@@ -132,7 +132,7 @@ const Products = () => {
               </div>
 
               <button
-                className="px-5 py-2 bg-black text-white font-medium"
+                className="px-2 sm:px-5 py-2 bg-black text-white font-medium"
                 type="submit"
                 onClick={() => {
                   const filterlist = products.filter((product) =>
@@ -177,7 +177,7 @@ const Products = () => {
                 >
                   Show All Products
                 </button>
-                <div className="grid grid-cols-3">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                   {filteredCategoryProduct.map((product) => (
                     <Link
                       href={"/products/" + product.id}
@@ -205,7 +205,7 @@ const Products = () => {
                 </div>
               </div>
             )}
-            <div className="grid grid-cols-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
               {!selectedCategory &&
                 filteredProducts?.map((product) => (
                   <Link
@@ -219,13 +219,13 @@ const Products = () => {
                         alt={product.title}
                         className="w-full h-auto"
                       />
-                      <p className="font-semibold text-xl pt-2 pb-1 text-center">
+                      <p className="font-semibold lg:text-xl pt-2 pb-1 text-center">
                         {product.title}
                       </p>
-                      <p className="font-medium text-lg pt-0 pb-1 text-center">
+                      <p className="font-medium text-sm lg:text-lg pt-0 pb-1 text-center">
                         {product.category}
                       </p>
-                      <p className="pt-1 font-semibold text-lg text-center">
+                      <p className="pt-1 font-semibold lg:text-lg text-center">
                         ${product.price}
                       </p>
                     </div>

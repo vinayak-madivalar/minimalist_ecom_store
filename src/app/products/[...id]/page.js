@@ -45,8 +45,8 @@ const ProductDetails = () => {
   return (
     <div>
       <Navbar />
-      <div className="flex gap-12 my-8">
-        <div className="w-1/2">
+      <div className="flex flex-wrap lg:flex-nowrap gap-4 lg:gap-12 my-8">
+        <div className="w-full px-4 lg:w-1/2">
           <Swiper
             loop={true}
             spaceBetween={10}
@@ -55,7 +55,7 @@ const ProductDetails = () => {
                 thumbSwiper && !thumbSwiper.destroyed ? thumbSwiper : null,
             }}
             modules={[FreeMode, Thumbs]}
-            className="h-auto w-[26rem] rounded-md border"
+            className="h-auto w-full md:w-[26rem] rounded-md border"
           >
             {product.images?.map((img, index) => (
               <SwiperSlide key={index}>
@@ -92,8 +92,8 @@ const ProductDetails = () => {
             ))}
           </Swiper>
         </div>
-        <div className="w-1/2">
-          <h1 className=" mb-3">{product.title}</h1>
+        <div className="w-full px-4 lg:w-1/2">
+          <h1 className="mb-3">{product.title}</h1>
           <p className="mb-3">
             tags:{" "}
             {product.tags?.map((tag) => (
@@ -117,17 +117,17 @@ const ProductDetails = () => {
           <div className="flex gap-2 mb-8">
             <button
               onClick={() => handleAddItem(product)}
-              className="px-16 py-3 bg-black text-white font-medium border"
+              className="px-8 lg:px-16 py-3 bg-black text-white font-medium border"
             >
               Add to Cart
             </button>
-            <button className="px-16 py-3 font-medium border-black border">
+            <button className="px-8 lg:px-16 py-3 font-medium border-black border">
               Buy Now
             </button>
           </div>
           <div className="mb-8">
             <h2 className="mb-2 font-semibold">Product Details</h2>
-            <p className="font-sans text-gray-500 w-[28rem] mb-2">
+            <p className="font-sans text-gray-500 md:w-[28rem] mb-2">
               {product.description}
             </p>
             <p className="font-sans mb-2 ">
