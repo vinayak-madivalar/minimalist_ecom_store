@@ -25,7 +25,6 @@ const Products = () => {
       const json = await data.json();
       setProducts(json.products);
       setFilteredProducts(json.products);
-      console.log(json.products);
 
       let filterProducts = json.products;
 

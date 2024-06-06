@@ -30,7 +30,6 @@ const HeroSection = () => {
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
-    console.log(category);
   };
 
   const slides = [
@@ -43,13 +42,13 @@ const HeroSection = () => {
       <Swiper
         modules={[Navigation, Pagination, EffectFade, Autoplay]}
         spaceBetween={30}
-        slidesPerView={5}
+        slidesPerView={1}
         effect={"fade"}
         loop={true}
         autoplay={{ delay: 3000 }}
         pagination={{ clickable: true }}
         navigation
-        className="h-1/2"
+        className="h-full"
       >
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>

@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --swiper-theme-color: #000;
-  --swiper-navigation-color: #000;
-  --swiper-navigation-size: 30px;
+  --swiper-theme-color: #000 !important;
+  --swiper-navigation-color: #000 !important;
+  --swiper-navigation-size: 24px !important;
 }
 
 h1 {

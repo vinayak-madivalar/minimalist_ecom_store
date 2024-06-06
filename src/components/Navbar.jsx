@@ -4,6 +4,7 @@ import Link from "next/link";
 import Logo from "./Logo";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
+import HamBurgurMenu from "./HamBurgurMenu";
 
 const Navbar = () => {
   const cartItems = useSelector((store) => store.cart.items);
@@ -19,11 +20,11 @@ const Navbar = () => {
 
   return (
     <div className="flex justify-between items-center sticky w-full z-50 top-0 py-5 px-4 lg:px-20 font-semibold bg-gray-100">
-      <div className="flex items-center gap-16">
+      <div className="hidden lg:flex items-center gap-16">
         <Link href={"/"}>
           <Logo />
         </Link>
-        <ul className="hidden md:flex items-start gap-6 ">
+        <ul className="hidden lg:flex items-start gap-6 ">
           <Link href={"/"}>
             <li>Home</li>
           </Link>
@@ -39,9 +40,12 @@ const Navbar = () => {
           </Link>
         </ul>
       </div>
+      <div className="lg:hidden">
+        <HamBurgurMenu />
+      </div>
       <div>
-        <ul className="flex items-center gap-5">
-          <li className="hidden lg:block">
+        <ul className="flex items-center gap-4">
+          <li>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -75,7 +79,7 @@ const Navbar = () => {
               </svg>
             </li>
           </Link>
-          <li className="hidden lg:block">
+          <li>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

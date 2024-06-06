@@ -31,7 +31,6 @@ const ProductDetails = () => {
     const data = await fetch("https://dummyjson.com/products/" + id);
     const json = await data.json();
     setProduct(json);
-    console.log(json);
   }
 
   const getRandomNumber = (min, max) => {
