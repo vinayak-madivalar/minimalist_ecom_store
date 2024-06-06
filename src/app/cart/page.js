@@ -69,7 +69,7 @@ const Cart = () => {
                   key={item.id}
                   className="flex items-center justify-between border-b mb-4"
                 >
-                  <div className="flex flex-wrap items-center gap-4 mb-4 px-4">
+                  <div className="flex flex-col lg:flex-row lg:items-center gap-4 mb-4 px-4">
                     <div>
                       <img
                         src={item.thumbnail}
@@ -78,7 +78,7 @@ const Cart = () => {
                       />
                     </div>
                     <div>
-                      <p className="font-semibold mb-2">{item.title}</p>
+                      <p className="font-semibold mb-3">{item.title}</p>
                       <div className="rounded border py-[2px] w-[6rem] bg-gray-200 flex items-center justify-center gap-4">
                         <button onClick={() => handleDecreaseQuantity(item.id)}>
                           <FaMinus size={10} />
@@ -94,7 +94,7 @@ const Cart = () => {
                   </div>
                   <div className="flex flex-col gap-3">
                     <p className="px-4 font-bold text-center text-xl">
-                      $ {item.price}
+                      ${item.price}
                     </p>
                     <button
                       onClick={() => handleRemoveItem(item.id)}
