@@ -95,8 +95,11 @@ const ProductDetails = () => {
           <h1 className="mb-3">{product.title}</h1>
           <p className="mb-3">
             tags:{" "}
-            {product.tags?.map((tag) => (
-              <span className="px-2 py-1 mr-1 text-xs border rounded-sm bg-blue-300 text-white">
+            {product.tags?.map((tag, index) => (
+              <span
+                key={index}
+                className="px-2 py-1 mr-1 text-xs border rounded-sm bg-blue-300 text-white"
+              >
                 {tag}
               </span>
             ))}
@@ -137,8 +140,8 @@ const ProductDetails = () => {
           </div>
           <div>
             <h2 className="font-semibold">Customer Reviews</h2>
-            {product.reviews?.map((review) => (
-              <div className="mb-6">
+            {product.reviews?.map((review, index) => (
+              <div className="mb-6" key={index}>
                 <h3 className="flex gap-2 items-center mb-1 text-lg font-medium">
                   <PiUserCircleDuotone size={25} /> {review.reviewerName}
                 </h3>

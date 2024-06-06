@@ -35,7 +35,8 @@ const HeroSection = () => {
   const slides = [
     { id: 1, imgUrl: "img1.png", alt: "slide 1" },
     { id: 2, imgUrl: "img2.png", alt: "slide 2" },
-    { id: 3, imgUrl: "img3.png", alt: "slide 3" },
+    { id: 4, imgUrl: "img4.png", alt: "slide 4" },
+    { id: 5, imgUrl: "img5.png", alt: "slide 5" },
   ];
   return (
     <div>

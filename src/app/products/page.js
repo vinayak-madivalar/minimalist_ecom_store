@@ -63,17 +63,10 @@ const Products = () => {
   // Get category count
   const categoryCount = countCategories(products);
 
-  // Filter products by selected category and price range
+  // Filter products by selected category
   const filteredCategoryProduct = selectedCategory
     ? products.filter((product) => product.category === selectedCategory)
     : products;
-  // const filteredCategoryProduct = products.filter((product) => {
-  //   const isInCatogory = selectedCategory
-  //     ? product.category === selectedCategory
-  //     : true;
-  //   const isInPriceRange = product.price >= priceRange.min && priceRange.max;
-  //   return isInCatogory && isInPriceRange;
-  // });
 
   if (error) return <p>Error: {error.message}</p>;
 
@@ -85,9 +78,9 @@ const Products = () => {
           <div>
             <h2 className="mb-2 font-bold text-2xl">Category</h2>
             <ul>
-              {Object.keys(categoryCount).map((category) => (
+              {Object.keys(categoryCount).map((category, index) => (
                 <li
-                  key={category}
+                  key={index}
                   className="py-2 cursor-pointer font-sans font-medium uppercase text-sm "
                   onClick={() => setSelectedCategory(category)}
                 >
