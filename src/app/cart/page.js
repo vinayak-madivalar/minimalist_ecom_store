@@ -53,9 +53,9 @@ const Cart = () => {
             <h2 className="text-3xl font-semibold mb-0">Cart</h2>
             <button
               onClick={handleClearCart}
-              className="font-semibold text-sm flex items-center gap-1"
+              className="font-semibold text-sm flex items-center text-red-500 gap-1"
             >
-              <HiOutlineTrash size={20} /> Remove All
+              <HiOutlineTrash size={20} color="red" /> Clear Cart
             </button>
           </div>
           {cartItems?.length === 0 ? (
@@ -98,9 +98,9 @@ const Cart = () => {
                     </p>
                     <button
                       onClick={() => handleRemoveItem(item.id)}
-                      className="font-semibold text-xs flex items-center justify-center gap-1"
+                      className="font-semibold text-xs text-red-500 flex items-center justify-center gap-1"
                     >
-                      <HiOutlineTrash size={15} /> Remove
+                      <HiOutlineTrash size={15} color="red" /> Remove
                     </button>{" "}
                   </div>
                 </div>
@@ -114,14 +114,34 @@ const Cart = () => {
             <p className="font-semibold">${totalAmount.toFixed(2)}</p>
           </div>
           <div className=" mb-4 text-gray-600 flex justify-between">
-            <p>Discount</p> <p className="font-semibold">$0</p>
+            <p>Shipping</p>
+            <p className="font-semibold">
+              ${cartItems?.length === 0 ? 0 : 9.99}
+            </p>
           </div>
           <div className="border mb-4"></div>
-          <div className="mb-4 font-semibold flex justify-between">
+          <div className="mb-6 font-semibold flex justify-between">
             <p>Grand Total</p>
-            <p className="font-semibold text-xl">${totalAmount.toFixed(2)}</p>
+            <p className="font-semibold text-xl">
+              $
+              {parseInt(totalAmount.toFixed(2)) + cartItems?.length === 0
+                ? 0
+                : 9.99}
+            </p>
           </div>
-          <button className="px-16 py-2 text-sm bg-black text-white rounded-md">
+          <button className="w-full py-3  flex justify-center items-center gap-2 bg-black font-semibold text-white rounded-md">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="size-5"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M12 1.5a5.25 5.25 0 0 0-5.25 5.25v3a3 3 0 0 0-3 3v6.75a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3v-6.75a3 3 0 0 0-3-3v-3c0-2.9-2.35-5.25-5.25-5.25Zm3.75 8.25v-3a3.75 3.75 0 1 0-7.5 0v3h7.5Z"
+                clip-rule="evenodd"
+              />
+            </svg>
             Proceed to Checkout
           </button>
         </div>

@@ -13,10 +13,9 @@ const Footer = () => {
           <div>
             <Logo />
             <h2 className="pt-4 font-semibold">About Us</h2>
-            <p className="w-60 text-gray-600 text-sm mb-3">
-              Our passion is to bring you the best in fashion, electronics, and
-              home essentials, all at unbeatable prices. We pride ourselves on
-              exceptional customer service and fast, reliable shipping.
+            <p className="w-60 text-gray-600 text-sm mb-3 font-sans">
+              We bring you the best in fashion, electronics, and home essentials
+              at unbeatable prices, with top-notch service and fast shipping.
             </p>
           </div>
           <div>
