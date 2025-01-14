@@ -1,9 +1,10 @@
 import React from "react";
+import Image from "next/image";
 
 const Logo = () => {
   return (
     <div>
-      <span className="flex items-center gap-1 text-xl uppercase font-mono font-semibold">
+      {/* <span className="flex items-center gap-1 text-xl uppercase font-mono font-semibold">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -19,7 +20,8 @@ const Logo = () => {
           />
         </svg>
         Minimalist_Store
-      </span>
+      </span> */}
+      <Image src="/logo1.png" width={200} height={200} alt="logo" />
     </div>
   );
 };

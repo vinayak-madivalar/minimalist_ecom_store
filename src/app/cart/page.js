@@ -124,9 +124,8 @@ const Cart = () => {
             <p>Grand Total</p>
             <p className="font-semibold text-xl">
               $
-              {parseInt(totalAmount.toFixed(2)) + cartItems?.length === 0
-                ? 0
-                : 9.99}
+              {parseInt(totalAmount.toFixed(2)) +
+                parseInt(cartItems?.length === 0 ? 0 : 9.99)}
             </p>
           </div>
           <button className="w-full py-3  flex justify-center items-center gap-2 bg-black font-semibold text-white rounded-md">
