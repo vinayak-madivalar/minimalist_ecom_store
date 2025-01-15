@@ -19,7 +19,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className="flex justify-between items-center sticky w-full z-50 top-0 py-5 px-4 lg:px- font-semibold bg-gray-100">
+    <div className="flex justify-between items-center sticky w-full z-50 top-0 py-4 px-4 lg:px- font-semibold bg-gray-100">
       <div className="hidden lg:flex items-center gap-16">
         <Link href={"/"}>
           <Logo />
@@ -44,7 +44,7 @@ const Navbar = () => {
       </div>
 
       <div>
-        <ul className="flex items-center gap-4">
+        <ul className="flex items-center gap-5">
           <Link href={"/products"} className="">
             <li>
               <svg
