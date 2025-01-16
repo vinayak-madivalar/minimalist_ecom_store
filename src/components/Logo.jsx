@@ -21,7 +21,13 @@ const Logo = () => {
         </svg>
         Minimalist_Store
       </span> */}
-      <Image src="/logo.png" width={200} height={200} alt="logo" />
+      <Image
+        src="/logo.png"
+        width={200}
+        height={200}
+        alt="logo"
+        className="bg-white"
+      />
     </div>
   );
 };

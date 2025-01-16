@@ -3,7 +3,12 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Link from "next/link";
+import { BsCurrencyDollar } from "react-icons/bs";
+import { FaShoppingCart } from "react-icons/fa";
 import React, { useEffect, useState } from "react";
+import Rating from "@/components/Rating";
+import { useDispatch } from "react-redux";
+import { addItem } from "@/utils/cartSlice";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -12,6 +17,7 @@ const Products = () => {
   const [sortOption, setSortOption] = useState("price-desc");
   const [searchText, setSearchText] = useState("");
   const [error, setError] = useState(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     fetchProducts();
@@ -19,9 +25,7 @@ const Products = () => {
 
   const fetchProducts = async () => {
     try {
-      const data = await fetch(
-        "https://dummyjson.com/products?limit=50&skip=10"
-      );
+      const data = await fetch("https://dummyjson.com/products?limit=100");
       const json = await data.json();
       setProducts(json.products);
       setFilteredProducts(json.products);
@@ -60,6 +64,10 @@ const Products = () => {
     return categoryCount;
   }
 
+  const handleAddItem = (product) => {
+    dispatch(addItem(product));
+  };
+
   // Get category count
   const categoryCount = countCategories(products);
 
@@ -74,14 +82,14 @@ const Products = () => {
     <div>
       <Navbar />
       <div className="flex items-center justify-center md:items-start md:justify-start ">
-        <aside className="mt-4 pl-4 w-2/12 hidden md:block">
+        <aside className="mt-6 pl-4 w-2/12 hidden md:block">
           <div>
             <h2 className="mb-2 font-bold text-2xl">Category</h2>
             <ul>
               {Object.keys(categoryCount).map((category, index) => (
                 <li
                   key={index}
-                  className="py-2 cursor-pointer font-sans font-medium uppercase text-sm "
+                  className="py-2 cursor-pointer font-sans font-medium uppercase text-sm hover:text-blue-800 hover:underline"
                   onClick={() => setSelectedCategory(category)}
                 >
                   {category} ({categoryCount[category]})
@@ -90,8 +98,8 @@ const Products = () => {
             </ul>
           </div>
         </aside>
-        <div className="w-10/12">
-          <div className="flex flex-wrap gap-10 items-center justify-between mt-4 mx-4">
+        <div className="md:w-10/12 px-4 md:px-0">
+          <div className="flex flex-wrap gap-10 items-center justify-between mt-6 mx-4">
             <div className="flex md:flex-grow">
               <div className="flex items-center md:flex-grow border">
                 <span className="px-3">
@@ -156,7 +164,7 @@ const Products = () => {
               </select>
             </div>
           </div>
-          <div className="grid grid-flow-row">
+          <div className="grid grid-flow-row mt-4 md:mt-0">
             {selectedCategory && (
               <div>
                 <h2 className="mx-4 mt-4 mb-0 font-bold text-2xl">
@@ -169,7 +177,7 @@ const Products = () => {
                 >
                   Show All Products
                 </button>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
                   {filteredCategoryProduct.map((product) => (
                     <Link
                       href={"/products/" + product.id}
@@ -182,58 +190,70 @@ const Products = () => {
                           alt={product.title}
                           className="w-full h-auto"
                         />
-                        <p className="font-semibold text-xl pt-2 pb-1 text-center">
-                          {product.title}
-                        </p>
-                        <p className="font-medium text-lg pt-0 pb-1 text-center">
-                          {product.category}
-                        </p>
-                        <p className="pt-1 font-semibold text-lg text-center">
-                          ${product.price}
-                        </p>
+                        <div className="px-2">
+                          <p className="font-medium font-sans text-gray-400 text-sm lg:text-sm pt-1 pb- text-left flex items-center gap-1">
+                            {product.category} <Rating data={product} />
+                          </p>
+                          <p className="font-semibold lg:text-lg pt-2 pb- text-left text-blue-800 hover:underline">
+                            {product.title}
+                          </p>
+                          <div className="flex items-baseline justify-between py-2">
+                            <p className="font-bold lg:text-lg text-left flex items-center justify-start font-sans">
+                              <BsCurrencyDollar size={20} />
+                              {product.price}
+                            </p>
+                            <button
+                              className="p-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors"
+                              onClick={() => {
+                                handleAddItem(product);
+                              }}
+                            >
+                              <FaShoppingCart size={18} />
+                            </button>
+                          </div>
+                        </div>
                       </div>
                     </Link>
                   ))}
                 </div>
               </div>
             )}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
               {!selectedCategory &&
                 filteredProducts?.map((product) => (
                   <Link
                     href={"/products/" + product.id}
                     key={product.id}
-                    className="border shadow-lg rounded-md my-4 mx-4 pb-4 flex flex-col justify-center items-center"
+                    className="border md:shadow-lg md:rounded-md md:my-4 md:mx-4 md:pb-4 flex flex-col justify-center items-center"
                   >
                     <div>
                       <img
                         src={product.images[0]}
                         alt={product.title}
-                        className="w-full h-auto"
+                        className="w-full"
                       />
-                      <p className="font-semibold lg:text-xl pt-2 pb-1 text-center text-blue-800 hover:underline">
-                        {product.title}
-                      </p>
-                      <p className="font-medium text-sm lg:text-base pt-0 pb-1 text-center">
-                        {product.category}
-                      </p>
-                      <p className="pt-1 font-bold lg:text-lg text-center flex items-center justify-center">
-                        <svg
-                          width="24px"
-                          height="24px"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            clipRule="evenodd"
-                            d="M13 3.5C13 2.94772 12.5523 2.5 12 2.5C11.4477 2.5 11 2.94772 11 3.5V4.0592C9.82995 4.19942 8.75336 4.58509 7.89614 5.1772C6.79552 5.93745 6 7.09027 6 8.5C6 9.77399 6.49167 10.9571 7.5778 11.7926C8.43438 12.4515 9.58764 12.8385 11 12.959V17.9219C10.2161 17.7963 9.54046 17.5279 9.03281 17.1772C8.32378 16.6874 8 16.0903 8 15.5C8 14.9477 7.55228 14.5 7 14.5C6.44772 14.5 6 14.9477 6 15.5C6 16.9097 6.79552 18.0626 7.89614 18.8228C8.75336 19.4149 9.82995 19.8006 11 19.9408V20.5C11 21.0523 11.4477 21.5 12 21.5C12.5523 21.5 13 21.0523 13 20.5V19.9435C14.1622 19.8101 15.2376 19.4425 16.0974 18.8585C17.2122 18.1013 18 16.9436 18 15.5C18 14.1934 17.5144 13.0022 16.4158 12.1712C15.557 11.5216 14.4039 11.1534 13 11.039V6.07813C13.7839 6.20366 14.4596 6.47214 14.9672 6.82279C15.6762 7.31255 16 7.90973 16 8.5C16 9.05228 16.4477 9.5 17 9.5C17.5523 9.5 18 9.05228 18 8.5C18 7.09027 17.2045 5.93745 16.1039 5.17721C15.2467 4.58508 14.1701 4.19941 13 4.0592V3.5ZM11 6.07814C10.2161 6.20367 9.54046 6.47215 9.03281 6.8228C8.32378 7.31255 8 7.90973 8 8.5C8 9.22601 8.25834 9.79286 8.79722 10.2074C9.24297 10.5503 9.94692 10.8384 11 10.9502V6.07814ZM13 13.047V17.9263C13.7911 17.8064 14.4682 17.5474 14.9737 17.204C15.6685 16.7321 16 16.1398 16 15.5C16 14.7232 15.7356 14.1644 15.2093 13.7663C14.7658 13.4309 14.0616 13.1537 13 13.047Z"
-                            fill="#000000"
-                          />
-                        </svg>
-                        {product.price}
-                      </p>
+                      <div className="px-2">
+                        <p className="font-medium font-sans text-gray-400 text-sm lg:text-sm pt-1 pb- text-left flex items-center gap-1">
+                          {product.category} <Rating data={product} />
+                        </p>
+                        <p className="font-semibold lg:text-lg pt-2 pb- text-left text-blue-800 hover:underline">
+                          {product.title}
+                        </p>
+                        <div className="flex items-baseline justify-between py-2">
+                          <p className="font-bold lg:text-lg text-left flex items-center justify-start font-sans">
+                            <BsCurrencyDollar size={20} />
+                            {product.price}
+                          </p>
+                          <button
+                            className="p-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors"
+                            onClick={() => {
+                              handleAddItem(product);
+                            }}
+                          >
+                            <FaShoppingCart size={18} />
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </Link>
                 ))}

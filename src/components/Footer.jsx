@@ -2,13 +2,225 @@ import Logo from "./Logo";
 import { FaFacebook } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa";
-import { FaYoutube } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa6";
+import {
+  FaCcVisa,
+  FaCcMastercard,
+  FaCcAmex,
+  FaCcPaypal,
+  FaCcDiscover,
+} from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div>
-      <div className="flex items-start flex-wrap justify-between gap-4 px-4 lg:px-16 bg-gray-100 mt-8 py-8">
+    <footer id="footer" class="bg-gray-900 text-gray-300 mt-8">
+      <div class="border-b border-gray-800">
+        <div class="container mx-auto px-4 py-12">
+          <div class="flex flex-col md:flex-row items-center justify-between">
+            <div class="mb-6 md:mb-0">
+              <h3 class="text-2xl font-bold text-white mb-2">
+                Subscribe to our Newsletter
+              </h3>
+              <p class="text-gray-400">
+                Stay updated with our latest offers and products
+              </p>
+            </div>
+            <div class="w-full md:w-1/2 lg:w-1/3">
+              <form class="flex gap-2">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  class="flex-1 px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:border-blue-500"
+                />
+                <button class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                  Subscribe
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container mx-auto px-4 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div>
+            <div class="mb-4 ">
+              <Logo />
+            </div>
+            <p class="text-gray-400 mb-4">
+              Your one-stop destination for all your shopping needs. Quality
+              products, competitive prices, and exceptional service.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition-colors"
+              >
+                <FaFacebook size={20} color="gray" />
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition-colors"
+              >
+                <FaXTwitter size={20} color="gray" />
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition-colors"
+              >
+                <FaLinkedin size={20} color="gray" />
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition-colors"
+              >
+                <FaInstagram size={20} color="gray" />
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-white mb-4">Quick Links</h3>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="/aboutus"
+                  class="text-gray-400 hover:text-white transition-colors"
+                >
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/contactus"
+                  class="text-gray-400 hover:text-white transition-colors"
+                >
+                  Contact Us
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors"
+                >
+                  Blog
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors"
+                >
+                  FAQs
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors"
+                >
+                  Careers
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-white mb-4">
+              Customer Service
+            </h3>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors"
+                >
+                  Shipping Information
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors"
+                >
+                  Returns & Exchanges
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors"
+                >
+                  Terms & Conditions
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors"
+                >
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors"
+                >
+                  Support Center
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-white mb-4">Contact Us</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start space-x-3">
+                <i class="fas fa-map-marker-alt mt-1"></i>
+                <span>123 Commerce Street, New York, NY 10001, USA</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <i class="fas fa-phone-alt"></i>
+                <span>+1 (555) 123-4567</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <i class="fas fa-envelope"></i>
+                <span>support@minimaliststore.com</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <i class="fas fa-clock"></i>
+                <span>Mon - Fri: 9:00 AM - 6:00 PM</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-800">
+        <div class="container mx-auto px-4 py-6">
+          <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="text-sm text-gray-400 mb-4 md:mb-0">
+              © 2024 Minimalist Store. All rights reserved.
+            </div>
+            <div class="flex items-center space-x-4">
+              <FaCcVisa size={30} color="silver" />
+              <FaCcMastercard size={30} color="silver" />
+              <FaCcAmex size={30} color="silver" />
+              <FaCcPaypal size={30} color="silver" />
+              <FaCcDiscover size={30} color="silver" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
+
+{
+  /* <div className="flex items-start flex-wrap justify-between gap-4 px-4 lg:px-16 bg-gray-100 mt-8 py-8">
         <div className="flex flex-wrap gap-4 lg:gap-20">
           <div>
             <Logo />
@@ -90,9 +302,5 @@ const Footer = () => {
         <p className="text-gray-600 text-sm mb-0">
           &copy; 2024 Minimalist_Store | All rights reserved.
         </p>
-      </div>
-    </div>
-  );
-};
-
-export default Footer;
+      </div> */
+}

@@ -8,8 +8,10 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <div>
-        <div className="my-16">
-          <h1 className="text-center my-4 font-semibold">What We Offer!</h1>
+        <div className="pt-8 pb-8">
+          <h1 className="text-center my-4 text-3xl md:text-4xl font-semibold">
+            What We Offer!
+          </h1>
           <div className="flex flex-wrap lg:flex-nowrap justify-evenly items-center lg:mx-12">
             <div className="w-[28rem] flex justify-center items-center flex-col px-5 py-5 shadow-lg border rounded-sm border-b-2 border-b-blue-500 m-4">
               <img src="delivery-truck.png" alt="" className="w-10 h-10" />
@@ -45,22 +47,6 @@ export default function Home() {
                 obtain pain of itself.
               </p>
             </div>
-          </div>
-        </div>
-
-        <div className="flex justify-center items-center flex-col bg-bgimg py-16 bg-center my-16">
-          <div className="flex flex-col mx-4">
-            <h2 className="text-white text-3xl text-center font-semibold">
-              Get Latest Update <br /> Subscribe to Our Newslatter
-            </h2>
-            <input
-              type="text"
-              className="pl-8 py-4 border mb-4 bg-transparent text-white text-lg"
-              placeholder="Enter your email"
-            />
-            <button className="py-4 border text-sm font-semibold bg-white text-black uppercase">
-              Subscribe
-            </button>
           </div>
         </div>
       </div>

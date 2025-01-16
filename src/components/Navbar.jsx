@@ -19,7 +19,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className="flex justify-between items-center sticky w-full z-50 top-0 py-4 px-4 lg:px- font-semibold bg-gray-100">
+    <div className="flex justify-between items-center sticky w-full z-50 top-0 py-4 px-4 lg:px- font-semibold bg-white shadow-md">
       <div className="hidden lg:flex items-center gap-16">
         <Link href={"/"}>
           <Logo />
