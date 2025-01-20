@@ -14,10 +14,12 @@ const Products = () => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
   const [sortOption, setSortOption] = useState("price-desc");
   const [searchText, setSearchText] = useState("");
   const [error, setError] = useState(null);
   const dispatch = useDispatch();
+  const itemsPerPage = 16;
 
   useEffect(() => {
     fetchProducts();
@@ -77,6 +79,17 @@ const Products = () => {
     : products;
 
   if (error) return <p>Error: {error.message}</p>;
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const currentProducts = products.slice(startIndex, startIndex + itemsPerPage);
+
+  const totalPages = Math.ceil(products.length / itemsPerPage);
+
+  const handlePageChange = (page) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+    }
+  };
 
   return (
     <div>
@@ -220,7 +233,7 @@ const Products = () => {
             )}
             <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
               {!selectedCategory &&
-                filteredProducts?.map((product) => (
+                currentProducts?.map((product) => (
                   <Link
                     href={"/products/" + product.id}
                     key={product.id}
@@ -258,6 +271,33 @@ const Products = () => {
                   </Link>
                 ))}
             </div>
+          </div>
+          <div className="flex justify-center mt-4 space-x-2">
+            <button
+              className="px-3 py-1 border font-semibold rounded disabled:opacity-50"
+              disabled={currentPage === 1}
+              onClick={() => handlePageChange(currentPage - 1)}
+            >
+              Prev
+            </button>
+            {Array.from({ length: totalPages }, (_, index) => (
+              <button
+                key={index}
+                className={`px-3 py-1 border rounded ${
+                  currentPage === index + 1 ? "bg-blue-600 text-white" : ""
+                }`}
+                onClick={() => handlePageChange(index + 1)}
+              >
+                {index + 1}
+              </button>
+            ))}
+            <button
+              className="px-3 py-1 border font-semibold rounded disabled:opacity-50"
+              disabled={currentPage === totalPages}
+              onClick={() => handlePageChange(currentPage + 1)}
+            >
+              Next
+            </button>
           </div>
         </div>
       </div>
