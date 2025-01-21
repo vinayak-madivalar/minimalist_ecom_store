@@ -88,17 +88,20 @@ const HeroSection = () => {
           ) : (
             products.map((product) => (
               <Link href={"/products/" + product.id} key={product.id}>
-                <div className="border bg-gray-50 hover:bg-white hover:shadow-xl rounded-md my-4 mx-4 pb-4 flex flex-col justify-center items-center">
+                <div className="border hover:bg-white hover:shadow-xl rounded-md my-4 mx-4 pb-4 flex flex-col justify-center items-center">
                   <img
                     src={product.images[0]}
                     alt={product.title}
-                    className="w-3/4 h-3/4"
+                    className="aspect-square bg-gray-200"
                   />
                   <div className="flex flex-col justify-start items-center ">
                     <p className="font-semibold text-center pt-2 pb-1 text-blue-800 hover:underline">
                       {product.title}
                     </p>
-                    <Rating data={product} size={"100"} />
+                    <div className="flex items-center gap-1 font-sans font-mediu">
+                      <Rating data={product} size={"100"} /> (
+                      {product.rating.toFixed(1)})
+                    </div>
                     <p className="pt-1 text-center text-lg flex items-center font-bold">
                       <BsCurrencyDollar size={20} />
                       {product.price}
@@ -117,7 +120,7 @@ const HeroSection = () => {
           </button>
         </div>
       </div>
-      <div className="mb-8 bg-gray-100 py-12">
+      <div className=" bg-gray-100 py-12">
         <h1 className="text-center mb-6 text-3xl md:text-4xl font-semibold">
           Latest Products
         </h1>

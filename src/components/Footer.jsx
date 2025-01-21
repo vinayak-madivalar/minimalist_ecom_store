@@ -14,33 +14,6 @@ import {
 const Footer = () => {
   return (
     <footer id="footer" class="bg-gray-900 text-gray-300 mt-8">
-      <div class="border-b border-gray-800">
-        <div class="container mx-auto px-4 py-12">
-          <div class="flex flex-col md:flex-row items-center justify-between">
-            <div class="mb-6 md:mb-0">
-              <h3 class="text-2xl font-bold text-white mb-2">
-                Subscribe to our Newsletter
-              </h3>
-              <p class="text-gray-400">
-                Stay updated with our latest offers and products
-              </p>
-            </div>
-            <div class="w-full md:w-1/2 lg:w-1/3">
-              <form class="flex gap-2">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  class="flex-1 px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:border-blue-500"
-                />
-                <button class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                  Subscribe
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div class="container mx-auto px-4 py-12">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>

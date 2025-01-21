@@ -5,6 +5,10 @@ import Navbar from "@/components/Navbar";
 import Link from "next/link";
 import { BsCurrencyDollar } from "react-icons/bs";
 import { FaShoppingCart } from "react-icons/fa";
+import {
+  MdOutlineKeyboardArrowLeft,
+  MdOutlineKeyboardArrowRight,
+} from "react-icons/md";
 import React, { useEffect, useState } from "react";
 import Rating from "@/components/Rating";
 import { useDispatch } from "react-redux";
@@ -80,6 +84,7 @@ const Products = () => {
 
   if (error) return <p>Error: {error.message}</p>;
 
+  // Calculate the products to display on the current page
   const startIndex = (currentPage - 1) * itemsPerPage;
   const currentProducts = products.slice(startIndex, startIndex + itemsPerPage);
 
@@ -89,6 +94,10 @@ const Products = () => {
     if (page >= 1 && page <= totalPages) {
       setCurrentPage(page);
     }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
   return (
@@ -195,13 +204,13 @@ const Products = () => {
                     <Link
                       href={"/products/" + product.id}
                       key={product.id}
-                      className="border shadow-lg rounded-md my-4 mx-4 pb-4 flex flex-col justify-center items-center"
+                      className="border aspect-square shadow-lg rounded-md my-4 mx-4 pb-4 flex flex-col justify-center items-center"
                     >
                       <div>
                         <img
                           src={product.images[0]}
                           alt={product.title}
-                          className="w-full h-auto"
+                          className="aspect-square bg-gray-200"
                         />
                         <div className="px-2">
                           <p className="font-medium font-sans text-gray-400 text-sm lg:text-sm pt-1 pb- text-left flex items-center gap-1">
@@ -237,13 +246,13 @@ const Products = () => {
                   <Link
                     href={"/products/" + product.id}
                     key={product.id}
-                    className="border md:shadow-lg md:rounded-md md:my-4 md:mx-4 md:pb-4 flex flex-col justify-center items-center"
+                    className="border aspect-square md:shadow-lg md:rounded-md md:my-4 md:mx-4 md:pb-4 flex flex-col justify-center items-center"
                   >
                     <div>
                       <img
                         src={product.images[0]}
                         alt={product.title}
-                        className="w-full"
+                        className="aspect-square bg-gray-200"
                       />
                       <div className="px-2">
                         <p className="font-medium font-sans text-gray-400 text-sm lg:text-sm pt-1 pb- text-left flex items-center gap-1">
@@ -272,33 +281,46 @@ const Products = () => {
                 ))}
             </div>
           </div>
-          <div className="flex justify-center mt-4 space-x-2">
-            <button
-              className="px-3 py-1 border font-semibold rounded disabled:opacity-50"
-              disabled={currentPage === 1}
-              onClick={() => handlePageChange(currentPage - 1)}
-            >
-              Prev
-            </button>
-            {Array.from({ length: totalPages }, (_, index) => (
+          {!selectedCategory && (
+            <div className="flex lg:justify-center flex-wrap lg:flex-nowrap my-8 lg:space-x-4">
               <button
-                key={index}
-                className={`px-3 py-1 border rounded ${
-                  currentPage === index + 1 ? "bg-blue-600 text-white" : ""
-                }`}
-                onClick={() => handlePageChange(index + 1)}
+                className="px-3 py-1 border flex mx-1 lg:mx-0 items-center gap-1 border-gray-400 font-semibold rounded disabled:opacity-50"
+                disabled={currentPage === 1}
+                onClick={() => {
+                  handlePageChange(currentPage - 1);
+                  scrollToTop();
+                }}
               >
-                {index + 1}
+                <MdOutlineKeyboardArrowLeft size={20} />
+                Prev
               </button>
-            ))}
-            <button
-              className="px-3 py-1 border font-semibold rounded disabled:opacity-50"
-              disabled={currentPage === totalPages}
-              onClick={() => handlePageChange(currentPage + 1)}
-            >
-              Next
-            </button>
-          </div>
+              {Array.from({ length: totalPages }, (_, index) => (
+                <button
+                  key={index}
+                  className={`px-3 py-1 border mx-1 lg:mx-0 border-gray-400 font-semibold rounded ${
+                    currentPage === index + 1 ? "bg-blue-600 text-white" : ""
+                  }`}
+                  onClick={() => {
+                    handlePageChange(index + 1);
+                    scrollToTop();
+                  }}
+                >
+                  {index + 1}
+                </button>
+              ))}
+              <button
+                className="px-3 py-1 border flex gap-1 mx-1 lg:mx-0 border-gray-400 items-center font-semibold rounded disabled:opacity-50"
+                disabled={currentPage === totalPages}
+                onClick={() => {
+                  handlePageChange(currentPage + 1);
+                  scrollToTop();
+                }}
+              >
+                Next
+                <MdOutlineKeyboardArrowRight size={20} />
+              </button>
+            </div>
+          )}
         </div>
       </div>
       <Footer />

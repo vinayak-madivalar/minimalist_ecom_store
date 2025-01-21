@@ -39,8 +39,8 @@ const ProductList = ({ selectedCategory }) => {
     );
   if (error)
     return (
-      <p className="text-center py-16 font-semibold text-2xl">
-        Error: {error.message}
+      <p className="text-center font-sans py-16 font-semibold text-3xl">
+        Something Went Wrong!
       </p>
     );
 
@@ -53,12 +53,15 @@ const ProductList = ({ selectedCategory }) => {
               <img
                 src={product.images[0]}
                 alt={product.title}
-                className="w-full h-auto"
+                className="aspect-square bg-gray-200"
               />
               <p className="font-semibold pt-4 px-1 pb-1 text-center text-blue-800 hover:underline">
                 {product.title}
               </p>
-              <Rating data={product} />
+              <div className="flex items-center gap-1 font-sans font-mediu">
+                <Rating data={product} size={"100"} /> (
+                {product.rating.toFixed(1)})
+              </div>
               <p className="pt-1  text-lg flex items-center font-bold">
                 <BsCurrencyDollar size={20} />
                 {product.price}
